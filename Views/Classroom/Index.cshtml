@@ -1,0 +1,82 @@
+@model IEnumerable<MvcClassroom.Models.Classroom>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Of Classroom</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div>
+  <canvas id="myChart" style="max-width:300px;max-height:200px;"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Orion', 'Pollux', 'Polaris'],
+      datasets: [{
+        label: 'Total Student Percentage',
+        data: [9.57, 21.62, 25.75]
+      }]
+    },
+    hoverOffset: 4
+  });
+</script>
+<p>*This chart data is hardcoded</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Rank
+            </th>
+            <th>
+                Class Name
+            </th>
+            <th>
+                Symbol
+            </th>
+            <th>
+                Total Student
+            </th>
+            <th>
+                Total Student Percentage
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symbol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalStudent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalStudentPercentage)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

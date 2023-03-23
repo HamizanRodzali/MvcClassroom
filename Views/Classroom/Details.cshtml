@@ -1,0 +1,48 @@
+@model MvcClassroom.Models.Classroom
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Classroom</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Rank
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rank)
+        </dd>
+        <dt class = "col-sm-2">
+            Class Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+        <dt class = "col-sm-2">
+            Symbol
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Symbol)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Student
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalStudent)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Student Percentage
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalStudentPercentage)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
